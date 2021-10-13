@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar a tarefa {{ task.title }}{% endblock %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Edite '{{ task.title }}'</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Vai imprimir os fields definidos em forms.py -->
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Editar Tarefa">
+    </form>
+</div>
+{% endblock %}
