@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+<!-- CHAMANDO O CRISPY PARA ESTILIZAR OS FORMS -->
+{% load crispy_forms_tags %}
 
 {% block title %}Criar uma nova tarefa{% endblock %}
 
@@ -8,7 +10,7 @@
     <form method="POST">
         {% csrf_token %}
         <!-- Vai imprimir os fields definidos em forms.py -->
-        {{ form.as_p }}
+        {{ form | crispy }}
         <input type="submit" class="btn btn-success" value="Criar Tarefa">
     </form>
 </div>

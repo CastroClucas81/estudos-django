@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tasks',
     'about',
     'users',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#biblioteca para estilizar o form do django com bootstrap
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
