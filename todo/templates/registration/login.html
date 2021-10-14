@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- CHAMANDO O CRISPY PARA ESTILIZAR OS FORMS -->
+{% load crispy_forms_tags %}
+
+{% block title %}Entrar no Site{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Entrar no Site</h4>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    {{ form | crispy}}
+
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </form>
+
+                <p class="change-form-p">
+                    Quer criar uma conta? <a href="/accounts/register">Clique aqui!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

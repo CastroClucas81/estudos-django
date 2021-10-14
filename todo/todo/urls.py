@@ -21,5 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # caminho que vão ser acessados as url's do aplicativo
     # '' = '/'
-    path('', include('tasks.urls'))
+    path('', include('tasks.urls')),
+    path('accounts/', include('accounts.urls')),
+    #urls q envolvem accounts (autenticacao)
+    path('accounts/', include('django.contrib.auth.urls'))
 ]

@@ -5,6 +5,22 @@
 {% block content %}
 <div class="offset-1 col-10 list-div">
     <h1>Lista de tarefas</h1>
+
+    <div class="container dashboard">
+        <div class="col-4 dashboard-box" id="dashboard-lastdays">
+            <h4>Finalizado nos últimos 30 dias</h4>
+            <span>{{ tasksDoneRecently }}</span>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-done">
+            <h4>Tarefas finalizadas</h4>
+            <span>{{ tasksDone }}</span>
+        </div>
+        <div class="col-4 dashboard-box" id="dashboard-doing">
+            <h4>Tarefas para fazer</h4>
+            <span>{{ tasksDoing }}</span>
+        </div>
+    </div>
+
     <a id="add-link" href="newtask/">
         <div class="col-2 add-div">
             <i class="fas fa-plus"></i> Add tarefa
@@ -18,6 +34,14 @@
             <i class="fa fa-search" id="search-btn"></i>
         </form>
     </div>
+    <div class="col-12 filter-div">
+        <span>Filtrar por:</span>
+        <select name="filter" id="filter" class="form-select">
+            <option value="">Escolha uma opção</option>
+            <option value="done">Tarefas concluidas</option>
+            <option value="doing">tarefas em andamento</option>
+        </select>
+    </div>
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -29,7 +53,12 @@
     {% endif %}
     <ul class="task-list">
         {% for task in tasks %}
+
+        {% if task.done == 'doing' %}
         <li class="task-item">
+            {% else %}
+        <li class="task-item done">
+            {% endif %}
             <span><a href="/task/{{task.id}}">{{task.title}}</a></span>
             <a href="deletetask/{{task.id}}">
                 <span>
@@ -42,6 +71,11 @@
                 </span>
             </a>
 
+            <a href="changestatus/{{task.id}}">
+                <span>
+                    <i class="fas fa-check"></i>
+                </span>
+            </a>
         </li>
         {% endfor %}
     </ul>
